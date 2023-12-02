@@ -32,10 +32,10 @@ function fillScreen(sideLength) {
     }
     const pixels = document.querySelectorAll(".pixel");
 
-    addEnterBehavior(pixels);
+    addMouseEnterBehavior(pixels);
 }
 
-function addEnterBehavior(pixels) {
+function addMouseEnterBehavior(pixels) {
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseenter", () => {
             pixel.style.backgroundColor = "black";
@@ -45,9 +45,9 @@ function addEnterBehavior(pixels) {
 }
 
 function getSideLength() {
-    let userInput = Math.floor(Number(prompt("Enter number of pixels per side")));
+    const userInput = Math.floor(Number(prompt("Enter number of pixels per side")));
 
-    if (typeof userInput === "number" && userInput <= 100 && userInput > 0) {
+    if (userInput <= 100 && userInput > 0) {
         return userInput
     } else alert("You must enter a number between 1 and 100");
 }
