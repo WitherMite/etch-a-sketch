@@ -1,18 +1,29 @@
 const SCREEN = document.querySelector(".etchContainer");
+const SIZEBTN = document.querySelector(".sideLengthBtn");
 
 fillScreen(16);
+
+SIZEBTN.addEventListener("click", () => {
+    fillScreen(getSideLength());
+});
 
 function fillScreen(sideLength) {
     const pixelCount = sideLength ** 2;
     const pixelSize = (1 / sideLength) * 100;
+
+    if (!sideLength) {
+        return;
+    }
+    while (SCREEN.firstChild) {
+        SCREEN.removeChild(SCREEN.firstChild);
+    }
 
     for (i = 0; i < pixelCount; i++) {
         const PIXEL = document.createElement("div");
         
         PIXEL.setAttribute("style", 
             `height: ${pixelSize}%;
-            width: ${pixelSize}%;
-            flex: 1, 1, ${pixelSize}%;
+            flex: 1 1 ${pixelSize}%;
             border: 1px solid black;`
         );
         PIXEL.classList.add('pixel');
@@ -31,4 +42,12 @@ function addEnterBehavior(pixels) {
             pixel.style.border = "";
         });
     });
+}
+
+function getSideLength() {
+    let userInput = Math.floor(Number(prompt("Enter number of pixels per side")));
+
+    if (typeof userInput === "number" && userInput <= 100 && userInput > 0) {
+        return userInput
+    } else alert("You must enter a number between 1 and 100");
 }
