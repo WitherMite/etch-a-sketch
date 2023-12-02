@@ -10,6 +10,8 @@ body {
     margin: auto;
     height: 75vw;
     width: 75vw;
+    max-width: 80vh;
+    max-height: 80vh;
     display: flex;
     flex-wrap: wrap;
 }
