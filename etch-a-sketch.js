@@ -15,7 +15,20 @@ function fillScreen(sideLength) {
             flex: 1, 1, ${pixelSize}%;
             border: 1px solid black;`
         );
+        PIXEL.classList.add('pixel');
 
         SCREEN.appendChild(PIXEL);
     }
+    const pixels = document.querySelectorAll(".pixel");
+
+    addEnterBehavior(pixels);
+}
+
+function addEnterBehavior(pixels) {
+    pixels.forEach((pixel) => {
+        pixel.addEventListener("mouseenter", () => {
+            pixel.style.backgroundColor = "black";
+            pixel.style.border = "";
+        });
+    });
 }
