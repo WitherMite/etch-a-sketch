@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
+.etchContainer {
+    height: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+}
