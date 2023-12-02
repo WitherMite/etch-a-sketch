@@ -3,7 +3,9 @@
 }
 
 .etchContainer {
-    height: 100vw;
+    margin: auto;
+    height: 75vw;
+    width: 75vw;
     display: flex;
     flex-wrap: wrap;
 }
