@@ -48,17 +48,17 @@ function fillScreen(sideLength) {
     }
 
     for (i = 0; i < pixelCount; i++) {
-        const PIXEL = document.createElement("div");
+        const pixel = document.createElement("div");
         
-        PIXEL.setAttribute("style", 
+        pixel.setAttribute("style", 
             `height: ${pixelSize}%;
             flex: 1 1 ${pixelSize}%;
             background-color: rgb(255,255,255);
             border: 1px solid black;`
         );
-        PIXEL.classList.add('pixel');
+        pixel.classList.add('pixel');
 
-        SCREEN.appendChild(PIXEL);
+        SCREEN.appendChild(pixel);
     }
     addMouseEnterBehavior();
 }
@@ -89,7 +89,6 @@ function addBlackMouseEnter() {
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseenter", () => {
             pixel.style.backgroundColor = "rgb(0,0,0)";
-            pixel.style.border = "";
         });
     });
 }
@@ -112,9 +111,7 @@ function addGradientMouseEnter() {
         pixel.addEventListener("mouseenter", () => {
             const currentColor = pixel.style.backgroundColor;
             const colorValues = currentColor.slice(4,-1).split(",");
-            const darkerColor = `rgb(${darkenColorValues(colorValues)})`;
-
-            pixel.style.backgroundColor = darkerColor;
+            pixel.style.backgroundColor = `rgb(${darkenColorValues(colorValues)})`;
         });
     });
 }
