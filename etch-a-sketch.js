@@ -112,7 +112,7 @@ function addGradientMouseEnter() {
         pixel.addEventListener("mouseenter", () => {
             const currentColor = pixel.style.backgroundColor;
             const colorValues = currentColor.slice(4,-1).split(",");
-            const darkerColor = `rgb(${darkenColorValues(colorValues)})`;
+            const darkerColor = `rgb(${darkenColorValues(colorValues)})`
 
             pixel.style.backgroundColor = darkerColor;
         });
