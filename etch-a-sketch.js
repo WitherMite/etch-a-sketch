@@ -1,6 +1,7 @@
 const SCREEN = document.querySelector(".etchContainer");
 const SIZE_BTN = document.querySelector(".sideLengthBtn");
 const RESET_BTN = document.querySelector(".resetBtn");
+let currentPen = "black";
 
 fillScreen(16);
 
@@ -44,6 +45,22 @@ function fillScreen(sideLength) {
 }
 
 function addMouseEnterBehavior() {
+    const pixels = document.querySelectorAll(".pixel");
+    
+    pixels.forEach((pixel) =>{
+        pixel.replaceWith(pixel.cloneNode());
+    });
+
+    switch (currentPen) {
+        case "black":
+            addBlackMouseEnter();
+            break;
+        case "rainbow":
+        case "gradient":
+    }
+}
+
+function addBlackMouseEnter() {
     const pixels = document.querySelectorAll(".pixel");
 
     pixels.forEach((pixel) => {
