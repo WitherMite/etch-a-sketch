@@ -75,7 +75,7 @@ function addMouseEnterBehavior() {
             addBlackMouseEnter();
             break;
         case "rainbow":
-            addRandomMouseEnter();
+            addRandomMouseEnter()
             break;
         case "gradient":
             addGradientMouseEnter();
