@@ -3,6 +3,7 @@ const SIZE_BTN = document.querySelector(".sideLengthBtn");
 const RESET_BTN = document.querySelector(".resetBtn");
 const RAINBOW_BTN = document.querySelector(".rainbowBtn");
 const BLACK_BTN = document.querySelector(".blackBtn");
+const GRADIENT_BTN = document.querySelector(".gradientBtn");
 let currentPen = "black";
 
 fillScreen(16);
@@ -27,6 +28,11 @@ RAINBOW_BTN.addEventListener("click", () => {
 
 BLACK_BTN.addEventListener("click", () => {
     currentPen = "black";
+    addMouseEnterBehavior();
+});
+
+GRADIENT_BTN.addEventListener("click", () => {
+    currentPen = "gradient";
     addMouseEnterBehavior();
 });
 
@@ -61,7 +67,7 @@ function addMouseEnterBehavior() {
     const pixels = document.querySelectorAll(".pixel");
     
     pixels.forEach((pixel) =>{
-        pixel.replaceWith(pixel.cloneNode());
+        pixel.replaceWith(pixel.cloneNode()); //removes old event handlers
     });
 
     switch (currentPen) {
@@ -72,6 +78,8 @@ function addMouseEnterBehavior() {
             addRandomMouseEnter()
             break;
         case "gradient":
+            addGradientMouseEnter();
+            break;
     }
 }
 
@@ -97,6 +105,20 @@ function addRandomMouseEnter() {
     });
 }
 
+function addGradientMouseEnter() {
+    const pixels = document.querySelectorAll(".pixel");
+
+    pixels.forEach((pixel) => {
+        pixel.addEventListener("mouseenter", () => {
+            const currentColor = pixel.style.backgroundColor;
+            const colorValues = currentColor.slice(4,-1).split(",");
+            const darkerColor = `rgb(${darkenColorValues(colorValues)})`
+
+            pixel.style.backgroundColor = darkerColor;
+        });
+    });
+}
+
 function getSideLength() {
     const userInput = Math.floor(Number(prompt("Enter number of pixels per side")));
 
@@ -106,5 +128,19 @@ function getSideLength() {
 }
 
 function getrandomColor() {
-    return Math.floor(Math.random() * 255);
+    return Math.floor(Math.random() * 256);
+}
+
+function darkenColorValues (colorValues) {
+    const darkerColors = colorValues.map((value) => {
+        value = Number(value.trim());
+
+        if (value < 25.5) {
+            value = 0;
+        } else value -= 25.5;
+
+        return value;
+    });
+
+    return darkerColors;
 }
