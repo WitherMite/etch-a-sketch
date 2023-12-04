@@ -47,7 +47,7 @@ function addMouseEnterBehavior(pixels) {
 function getSideLength() {
     const userInput = Math.floor(Number(prompt("Enter number of pixels per side")));
 
-    if (userInput <= 100 && userInput > 0) {
-        return userInput
+    if (userInput && userInput <= 100) {
+        return userInput;
     } else alert("You must enter a number between 1 and 100");
 }
