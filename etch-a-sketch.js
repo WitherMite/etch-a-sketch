@@ -1,10 +1,20 @@
 const SCREEN = document.querySelector(".etchContainer");
-const SIZEBTN = document.querySelector(".sideLengthBtn");
+const SIZE_BTN = document.querySelector(".sideLengthBtn");
+const RESET_BTN = document.querySelector(".resetBtn");
 
 fillScreen(16);
 
-SIZEBTN.addEventListener("click", () => {
+SIZE_BTN.addEventListener("click", () => {
     fillScreen(getSideLength());
+});
+
+RESET_BTN.addEventListener("click", () => {
+    const pixels = document.querySelectorAll(".pixel");
+
+    pixels.forEach((pixel) => {
+        pixel.style.backgroundColor = "white";
+        pixel.style.border = "1px solid black";
+    });
 });
 
 function fillScreen(sideLength) {
@@ -30,12 +40,12 @@ function fillScreen(sideLength) {
 
         SCREEN.appendChild(PIXEL);
     }
-    const pixels = document.querySelectorAll(".pixel");
-
-    addMouseEnterBehavior(pixels);
+    addMouseEnterBehavior();
 }
 
-function addMouseEnterBehavior(pixels) {
+function addMouseEnterBehavior() {
+    const pixels = document.querySelectorAll(".pixel");
+
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseenter", () => {
             pixel.style.backgroundColor = "black";
