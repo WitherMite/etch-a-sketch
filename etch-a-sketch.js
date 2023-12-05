@@ -55,8 +55,6 @@ function fillScreen(sideLength) {
             background-color: rgb(255,255,255);
             border: 1px solid black;`
         );
-        pixel.classList.add('pixel');
-
         SCREEN.appendChild(pixel);
     }
     addMouseEnterBehavior();
@@ -108,8 +106,8 @@ function addGradientMouseEnter() {
 }
 
 function getSideLength() {
-    const userInput = Math.floor(Number(prompt("Enter number of pixels per side")));
-    
+    const userInput = Math.floor(Number(prompt("Enter number of pixels per side (1-100)")));
+
     if (userInput && userInput <= 100) {
         return userInput;
     } else alert("You must enter a number between 1 and 100");
