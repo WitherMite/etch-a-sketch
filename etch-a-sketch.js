@@ -4,6 +4,7 @@ const RESET_BTN = document.querySelector(".resetBtn");
 const RAINBOW_BTN = document.querySelector(".rainbowBtn");
 const BLACK_BTN = document.querySelector(".blackBtn");
 const GRADIENT_BTN = document.querySelector(".gradientBtn");
+const pixels = SCREEN.childNodes;
 let currentPen = "black";
 
 fillScreen(16);
@@ -13,8 +14,6 @@ SIZE_BTN.addEventListener("click", () => {
 });
 
 RESET_BTN.addEventListener("click", () => {
-    const pixels = document.querySelectorAll(".pixel");
-
     pixels.forEach((pixel) => {
         pixel.style.backgroundColor = "rgb(255,255,255)";
         pixel.style.border = "1px solid black";
@@ -64,8 +63,6 @@ function fillScreen(sideLength) {
 }
 
 function addMouseEnterBehavior() {
-    const pixels = document.querySelectorAll(".pixel");
-    
     pixels.forEach((pixel) =>{
         pixel.replaceWith(pixel.cloneNode()); //removes old event handlers
     });
@@ -84,8 +81,6 @@ function addMouseEnterBehavior() {
 }
 
 function addBlackMouseEnter() {
-    const pixels = document.querySelectorAll(".pixel");
-
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseenter", () => {
             pixel.style.backgroundColor = "rgb(0,0,0)";
@@ -94,8 +89,6 @@ function addBlackMouseEnter() {
 }
 
 function addRandomMouseEnter() {
-    const pixels = document.querySelectorAll(".pixel");
-
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseenter", () => {
             pixel.style.backgroundColor = `rgb(${getrandomColor()},${getrandomColor()},${getrandomColor()})`;
@@ -105,8 +98,6 @@ function addRandomMouseEnter() {
 }
 
 function addGradientMouseEnter() {
-    const pixels = document.querySelectorAll(".pixel");
-
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseenter", () => {
             const currentColor = pixel.style.backgroundColor;
@@ -117,8 +108,6 @@ function addGradientMouseEnter() {
 }
 
 function getSideLength() {
-    const userInput = Math.floor(Number(prompt("Enter number of pixels per side")));
-
     if (userInput && userInput <= 100) {
         return userInput;
     } else alert("You must enter a number between 1 and 100");
@@ -135,9 +124,7 @@ function darkenColorValues (colorValues) {
         if (value < 25.5) {
             value = 0;
         } else value -= 25.5;
-
         return value;
     });
-
     return darkerColors;
 }
