@@ -63,7 +63,7 @@ function fillScreen(sideLength) {
 }
 
 function addMouseEnterBehavior() {
-    pixels.forEach((pixel) =>{
+    pixels.forEach((pixel) => {
         pixel.replaceWith(pixel.cloneNode()); //removes old event handlers
     });
 
@@ -108,6 +108,8 @@ function addGradientMouseEnter() {
 }
 
 function getSideLength() {
+    const userInput = Math.floor(Number(prompt("Enter number of pixels per side")));
+    
     if (userInput && userInput <= 100) {
         return userInput;
     } else alert("You must enter a number between 1 and 100");
